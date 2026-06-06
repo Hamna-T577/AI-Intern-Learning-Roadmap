@@ -1,0 +1,2 @@
+class InvalidSalaryError(Exception):
+    pass
