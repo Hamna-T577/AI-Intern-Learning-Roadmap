@@ -146,3 +146,93 @@ http://127.0.0.1:8000/docs
 
 ---
 
+# Day 5 - Authentication & Security Basics
+
+## Objective
+
+Learn Authentication and Security concepts using FastAPI.
+
+## Topics Covered
+
+* Authentication
+* Login API
+* JWT Token Generation
+* Protected Routes
+* Security Basics
+
+## Technologies Used
+
+* Python
+* FastAPI
+* Uvicorn
+* Python-JOSE
+* Passlib
+
+## Project Structure
+
+```text
+Day5_Authentication/
+│
+├── main.py
+├── requirements.txt
+├── README.md
+├── .gitignore
+└── venv/
+```
+
+## Features
+
+* User Login
+* JWT Token Generation
+* Protected Endpoint
+* Authentication Flow
+
+## Installation
+
+### Create Virtual Environment
+
+```bash
+python -m venv venv
+```
+
+### Activate Virtual Environment
+
+```bash
+venv\Scripts\activate
+```
+
+### Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### Run Application
+
+```bash
+uvicorn main:app --reload
+```
+
+## API Documentation
+
+Open:
+
+```text
+http://127.0.0.1:8000/docs
+```
+
+## Endpoints
+
+| Method | Endpoint | Description     |
+| ------ | -------- | --------------- |
+| GET    | /        | Home            |
+| POST   | /login   | User Login      |
+| GET    | /profile | Protected Route |
+
+## Learning Outcome
+
+* Understand Authentication
+* Understand JWT Tokens
+* Secure APIs using Protected Routes
+* Learn Security Basics in FastAPI
+
