@@ -236,3 +236,284 @@ http://127.0.0.1:8000/docs
 * Secure APIs using Protected Routes
 * Learn Security Basics in FastAPI
 
+# Day 6 - FastAPI Production Features
+
+## Objective
+
+Learn how production-ready FastAPI applications are structured by implementing middleware, CORS configuration, headers, and centralized error handling.
+
+---
+
+## Topics Covered
+
+- Middleware
+- CORS Configuration
+- Request Headers
+- Global Exception Handling
+- Custom Error Responses
+- Pydantic Validation
+- Swagger Documentation
+
+---
+
+## Project Structure
+
+Day6_FastAPI_Production/
+
+├── app/
+│   ├── main.py
+│   ├── routes.py
+│   ├── middleware.py
+│   ├── exceptions.py
+│   └── models.py
+│
+├── requirements.txt
+
+---
+
+## Features Implemented
+
+### 1. CORS Configuration
+
+Configured CORS middleware to allow communication between frontend and backend applications.
+
+```python
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+```
+
+## Day 7 - File Handling and Background Tasks using FastAPI
+
+## Objective
+
+Learn how FastAPI handles file operations, form data, file validation, and background processing in a real-world backend application.
+
+---
+
+## Topics Covered
+
+* File Upload
+* File Download
+* Form Data Handling
+* File Validation
+* Background Tasks
+
+---
+
+## Project Structure
+
+```text
+Day7_FileHandling/
+
+├── app/
+│   ├── main.py
+│   ├── routes.py
+│   ├── background_tasks.py
+│
+├── uploads/
+├── log.txt
+├── requirements.txt
+```
+
+---
+
+## Features Implemented
+
+### 1. File Upload API
+
+Users can upload PDF files through Swagger UI.
+
+Endpoint:
+
+```http
+POST /upload
+```
+
+Features:
+
+* Accepts file uploads
+* Stores uploaded files inside the uploads folder
+* Returns upload confirmation
+
+Example Response:
+
+```json
+{
+  "message": "File uploaded successfully",
+  "filename": "resume.pdf"
+}
+```
+
+---
+
+### 2. File Validation
+
+Implemented validation to allow only PDF files.
+
+Example:
+
+Allowed:
+
+```text
+resume.pdf
+```
+
+Rejected:
+
+```text
+image.png
+virus.exe
+```
+
+Example Response:
+
+```json
+{
+  "error": "Only PDF files allowed"
+}
+```
+
+---
+
+### 3. File Download API
+
+Users can download previously uploaded files.
+
+Endpoint:
+
+```http
+GET /download/{filename}
+```
+
+Example:
+
+```http
+/download/resume.pdf
+```
+
+Returns the selected file for download.
+
+---
+
+### 4. Form Data Handling
+
+Implemented form submission using FastAPI Form.
+
+Endpoint:
+
+```http
+POST /submit
+```
+
+Input Fields:
+
+* name
+* email
+
+Example Request:
+
+```text
+name = Hamna
+email = hamna@gmail.com
+```
+
+Example Response:
+
+```json
+{
+  "name": "Hamna",
+  "email": "hamna@gmail.com"
+}
+```
+
+---
+
+### 5. Background Tasks
+
+Implemented FastAPI BackgroundTasks to execute tasks after sending the response.
+
+Endpoint:
+
+```http
+POST /background
+```
+
+Workflow:
+
+```text
+Client Request
+      ↓
+API Response Returned
+      ↓
+Background Task Executes
+      ↓
+Log Written to File
+```
+
+Example Response:
+
+```json
+{
+  "message": "Background Task Started"
+}
+```
+
+The background task writes:
+
+```text
+Task Executed
+```
+
+to log.txt.
+
+---
+
+## API Endpoints
+
+| Method | Endpoint             | Description             |
+| ------ | -------------------- | ----------------------- |
+| POST   | /upload              | Upload PDF File         |
+| GET    | /download/{filename} | Download File           |
+| POST   | /submit              | Submit Form Data        |
+| POST   | /background          | Execute Background Task |
+
+---
+
+## Learning Outcomes
+
+After completing this task, I learned:
+
+* How file uploads work in FastAPI
+* How to save uploaded files on the server
+* How file downloads are implemented
+* How to validate uploaded files
+* How form data is handled using Form()
+* How FastAPI Background Tasks work
+* How background processing improves API performance
+* How to test APIs using Swagger UI
+
+---
+
+## Run the Project
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Run the server:
+
+```bash
+uvicorn app.main:app --reload
+```
+
+Open Swagger UI:
+
+```text
+http://127.0.0.1:8000/docs
+```
